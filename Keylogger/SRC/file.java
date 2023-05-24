@@ -22,6 +22,6 @@ public class file {
         DOF = formatter.format(date);
     }
     public void localSave(target target, device device /*, data[] "in window"*/){
-        String Filename = target.getUserName()+"'s" /* + os.name */ + device.getDeviceType();
+        name = target.getUserName()+"'s" /* + os.name */ + device.getDeviceType();
     }
 }
