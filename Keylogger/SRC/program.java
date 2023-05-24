@@ -16,5 +16,7 @@ public class program {
         for (int i = 0; i< arr.size() ;i++) {
             System.out.println(arr.get(i).getDeviceType());
         }
+        file f = new file();
+        System.out.println(f.getDate());
     }
 }

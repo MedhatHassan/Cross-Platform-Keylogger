@@ -14,6 +14,9 @@ public class target {
     public void addDevice(target target , device device){
         target.devices.add(device);
     }
+    public void addFile(target target , file file){
+        target.files.add(file);
+    }
     public String getUserName(){
         return userName;
     }
