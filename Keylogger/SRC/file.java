@@ -3,7 +3,7 @@ import java.sql.Date;
 public class file {
     private String name;
     private Date date;
-
+    private device device;
     public String getName(){
         return name;
     }

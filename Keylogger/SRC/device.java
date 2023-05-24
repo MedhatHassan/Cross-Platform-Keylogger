@@ -1,5 +1,3 @@
-import java.lang.annotation.Target;
-
 public class device implements is_computer, is_mobile{
     protected target target;
     protected String deviceType;
@@ -15,5 +13,18 @@ public class device implements is_computer, is_mobile{
             return false;
         else 
             return true;
+    }
+    public String getDeviceType(){
+        return deviceType;
+    }
+    public device(){
+    if(isaComputer() == true)
+        this.deviceType = "Computer"; 
+    else this.deviceType = "Mobile";
+    }
+    public device(target target){
+        if(isaComputer() == true)
+            this.deviceType = "Computer";
+        else this.deviceType = "Mobile";
     }
 }
