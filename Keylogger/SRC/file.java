@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 public class file {
     private String fileName;
     private String DOF;
@@ -17,21 +18,20 @@ public class file {
     public String getDate(){
         return DOF;
     }
-    // public file(){
-        
-    // }
-    public file(target target, String fileName){
-        // super(name);
+    public file(){}
+    
+    public file(target target){
         this.target = target;
-        this.fileName = fileName;
+        ArrayList<device> devices = new ArrayList<device>();
+        devices = target.getDevices(target);
+        fileName = target.getUserName()+"'s" +" "+ devices.get(0).getDeviceType();
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         Date date = new Date(System.currentTimeMillis());
         DOF = formatter.format(date);
     }
     public void localSave(target target, device device ,String data/*, data[] "in window"*/){
-        String name = target.getUserName()+"'s" /* + os.name */ + device.getDeviceType();
         if (device instanceof windows){
-        fileName = String.format("%s.txt",name);
+        fileName = String.format("%s.txt",fileName);
         try {
             File Obj = new File(fileName);
             if (Obj.createNewFile()) {
@@ -47,7 +47,7 @@ public class file {
                 }
             }
         else if(device instanceof linux){
-            fileName = String.format("%s",name);
+            fileName = String.format("%s",fileName);
             try {
                 File Obj = new File(fileName);
                 if (Obj.createNewFile()) {

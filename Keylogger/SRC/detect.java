@@ -25,17 +25,13 @@ public class detect implements is_computer, is_mobile {
     public boolean IS_MAC = (osName.indexOf("mac") >= 0);
     public boolean IS_UNIX = (osName.indexOf("nix") >= 0 || osName.indexOf("nux") >= 0 || osName.indexOf("aix") > 0);
     public boolean IS_SOLARIS = (osName.indexOf("sunosName") >= 0);
+
     public detect(){}
     public void Detect(device device){
-        if(isaComputer() == false)
-            device = new moblie();
-        else{
-            if(IS_WINDOWS == true)
-                device = new windows();
-            else if (IS_UNIX == true)
-                device = new linux();
-            else device = new mac();
-        }
+
+    }
+    public void detector(){
+        
     }
     public String detectDesktop(){
         if(IS_WINDOWS == true)

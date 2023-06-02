@@ -38,10 +38,10 @@ public class db
             try {
             FileWriter Writer = new FileWriter(fileName);
             for(int i = 0; i< arr.size(); i++) {
-                String data = arr.get(i) + "     " + arr.get(i)+ "     " + arr.get(i);
+                String data = arr.get(i) + "     ";
                 Writer.write(data);
-                Writer.close();
             }
+                Writer.close();
                 System.out.println("Successfully wrote to the file.");
             } 
             catch (IOException e) {

@@ -7,26 +7,30 @@ public class program {
     public static void main(String[] args) throws Exception {
         target sakr = new target("sakr");
         device d1 = new device(sakr);
-        try {
-            String command = "py D:\\AAST_Courses\\semester_6\\OOP_java\\Keylogger_project\\new.py";
-            ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
+        sakr.addDevice(sakr, d1);
+        file f1 = new file(sakr);
+        db db = new db();
+        db.addToDB(sakr, d1, f1);
+        // try {
+        //     String command = "py D:\\AAST_Courses\\semester_6\\OOP_java\\Keylogger_project\\new.py";
+        //     ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
             
-            processBuilder.environment().put("targetFile", "");
+        //     processBuilder.environment().put("targetFile", "");
             
-            Process process = processBuilder.start();
+        //     Process process = processBuilder.start();
             
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-            int exitCode = process.waitFor();
+        //     BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        //     String line;
+        //     while ((line = reader.readLine()) != null) {
+        //         System.out.println(line);
+        //     }
+        //     int exitCode = process.waitFor();
             
-            System.out.println("Python script executed with exit code: " + exitCode);
-        } 
-        catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
+        //     System.out.println("Python script executed with exit code: " + exitCode);
+        // } 
+        // catch (IOException | InterruptedException e) {
+        //     e.printStackTrace();
+        // }
     }
 }
 // test device class & interfaces 
