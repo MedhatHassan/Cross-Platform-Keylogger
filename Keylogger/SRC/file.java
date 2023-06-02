@@ -1,3 +1,4 @@
+package src;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -29,29 +30,48 @@ public class file {
     }
     public void localSave(target target, device device ,String data/*, data[] "in window"*/){
         String name = target.getUserName()+"'s" /* + os.name */ + device.getDeviceType();
+        if (device instanceof windows){
         fileName = String.format("%s.txt",name);
         try {
             File Obj = new File(fileName);
             if (Obj.createNewFile()) {
                 System.out.println("File created: " + Obj.getName());
-            } 
+                } 
             else {
                 System.out.println("File already exists.");
             }
-            } 
+                } 
             catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
+                }
             }
+        else if(device instanceof linux){
+            fileName = String.format("%s",name);
             try {
-            FileWriter Writer = new FileWriter(fileName);
-            Writer.write(data);
-            Writer.close();
-            System.out.println("Successfully wrote to the file.");
-            } 
-            catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-            }
+                File Obj = new File(fileName);
+                if (Obj.createNewFile()) {
+                    System.out.println("File created: " + Obj.getName());
+                    } 
+                else {
+                    System.out.println("File already exists.");
+                }
+                    } 
+                catch (IOException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+                    }
         }
     }
+}
+
+    // try {
+    // FileWriter Writer = new FileWriter(fileName);
+    // Writer.write(data);
+    // Writer.close();
+    // System.out.println("Successfully wrote to the file.");
+    // } 
+    // catch (IOException e) {
+    // System.out.println("An error occurred.");
+    // e.printStackTrace();
+    // }

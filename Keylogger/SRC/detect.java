@@ -1,3 +1,5 @@
+package src;
+
 public class detect implements is_computer, is_mobile {
     private String osName = System.getProperty("os.name").toLowerCase(); //Get the osName fullname (Windows 10)
     private String osVersion = System.getProperty("java.runtime.version" ); //Get the osName version
@@ -36,10 +38,21 @@ public class detect implements is_computer, is_mobile {
         }
     }
     public String detectDesktop(){
-            if(IS_WINDOWS == true)
-                return "Windows";
-            else if (IS_UNIX == true)
-                return "Linux";
-            else return "Mac";
+        if(IS_WINDOWS == true)
+        return "Windows";
+        else if (IS_UNIX == true)
+        return "Linux";
+        else return "Mac";
     }
 }
+
+// public void Detect(device device){
+//     if(isaComputer() == false)
+//         device = new moblie();
+//     else{
+//         if(IS_WINDOWS == true)
+//             device = new windows();
+//         else if (IS_UNIX == true)
+//             device = new linux();
+//         else device = new mac();
+//     }

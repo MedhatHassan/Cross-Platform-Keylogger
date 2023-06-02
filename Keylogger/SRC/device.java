@@ -1,4 +1,5 @@
-public class device{
+package src;
+public class device {
     protected target target;
     protected String deviceType;
 
@@ -8,6 +9,6 @@ public class device{
     public device(){}
     public device(target target){
         detect d = new detect();
-        // d.Detect(target);
+        deviceType = d.detectDesktop();
     }
 }

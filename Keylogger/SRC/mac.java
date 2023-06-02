@@ -1,4 +1,5 @@
-public class mac extends desktop {
+package src;
+public class mac extends device {
     public mac (){
         System.out.println("class Mac");
     }
