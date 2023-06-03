@@ -9,8 +9,19 @@ public class program {
         device d1 = new device(sakr);
         sakr.addDevice(sakr, d1);
         file f1 = new file(sakr);
+        target reem = new target("reem");
+        device d2 = new device(reem);
+        reem.addDevice(reem, d1);
+        file f2 = new file(reem);
+        target medhat = new target("medhat");
+        device d3 = new device(medhat);
+        medhat.addDevice(medhat, d1);
+        file f3 = new file(medhat);
         db db = new db();
         db.addToDB(sakr, d1, f1);
+        db.addToDB(reem, d2, f2);
+        db.addToDB(medhat, d3, f3);
+        db.readFromDB();
         // try {
         //     String command = "py D:\\AAST_Courses\\semester_6\\OOP_java\\Keylogger_project\\new.py";
         //     ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));

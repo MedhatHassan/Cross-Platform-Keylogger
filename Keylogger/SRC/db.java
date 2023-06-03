@@ -1,28 +1,32 @@
 package src;
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.nio.file.*;
 public class db 
 {
     private int dataBaseRecords = 0;
+    private boolean isCreated = false;
     public int getDataBaseRecords(){
         return dataBaseRecords;
     }
-    ArrayList<String> arr = new ArrayList<String>();
+    String[] arr = new String[4];
     String fileName = "database.txt";
     File dataBase = new File(fileName);
             public void addToDB(target t, device d , file f) {
-                arr.add(t.getUserName());
-                arr.add(d.getDeviceType());
-                arr.add(f.getfileName());
+                if(isCreated == false){
+                    createDB();
+                    isCreated = true;
+                }
+                arr[0] = t.getUserName() + "     ";
+                arr[1] = d.getDeviceType()+ "     ";
+                arr[2] = f.getfileName()+ "     ";
+                arr[3] = "\n";
                 SaveToDB(arr);
                 dataBaseRecords++;
             }
-            //Write To DB
-            public void SaveToDB(ArrayList arr){
             //Create File of data base file
+            public void createDB(){
             try {
                 if (dataBase.createNewFile()) {
                     System.out.println("File created: " + dataBase.getName());
@@ -35,15 +39,20 @@ public class db
                 System.out.println("An error occurred.");
                 e.printStackTrace();
                 }
-            try {
-            FileWriter Writer = new FileWriter(fileName);
-            for(int i = 0; i< arr.size(); i++) {
-                String data = arr.get(i) + "     ";
-                Writer.write(data);
             }
-                Writer.close();
-                System.out.println("Successfully wrote to the file.");
-            } 
+            //Write To DB
+            public void SaveToDB(String arr[]){
+            try {
+                FileWriter file = new FileWriter(fileName,true);
+                BufferedWriter Writer = new BufferedWriter(file);
+            for(int i = 0 ; i< 4; i++) {
+                String data = arr[i];
+                Writer.write(data);
+                }
+            Writer.close();
+            file.close();
+            System.out.println("Successfully wrote to the file.");
+            }
             catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
